@@ -68,6 +68,7 @@ const maze = (map) => {
 
 maze(map);
 
+
 const winner = () => {
     container.appendChild(boxWin);
 
@@ -79,14 +80,17 @@ const winner = () => {
     
     boxWin.appendChild(message);
     boxWin.appendChild(restartButton);
+
+    document.onkeydown = false;
 }
+
+let counter = 0;
 
 const restartGame = () => {
     start.appendChild(player);
     container.removeChild(boxWin);
+    counter = 0;
 }
-
-let counter = 0;
 
 document.addEventListener("keydown", (event) => {
     const keyName = event.key;
@@ -116,8 +120,6 @@ document.addEventListener("keydown", (event) => {
             next.appendChild(player);
             winner();
             boxWin.classList.add("win");
-            // winMessage[0].classList.remove('t');
-            // winMessage[0].classList.add('win');
         }
     }
 
